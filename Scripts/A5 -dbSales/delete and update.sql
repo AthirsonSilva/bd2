@@ -22,8 +22,16 @@ update tb_product
 set name_product = 'Ovo Tradicional'
 where id_product = 1000
 
+update tb_fabricator
+set cnpj_fabricator = '62.432.092/0001-90'
+where name_fabricator = 'Lacta'
+
+update tb_product
+set weight_product = 100 / (weight_product * 10)
+where id_fabricator = 4
+
 delete from tb_product
-where id_product > 1005 and 1005 < id_product
+where id_product > 1005 and 1008 < id_product
 
 delete from tb_product
 where weight_product < 400 and name_product not like 'Laka'

@@ -14,4 +14,3 @@ create table tb_product(
 	weight_product int not null,
 	id_fabricator int foreign key references tb_fabricator(id_fabricator)
 )
-
