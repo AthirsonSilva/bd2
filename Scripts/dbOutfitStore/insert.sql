@@ -37,22 +37,14 @@ values
 select * from tbSaler
 insert into tbSaler(nameSaler)
 values
-	('Pyhon3.10.4'),
-	('Python3.11.0a')
+	('Jo√£o Santana'),
+	('Raquel Torres')
 
 select * from tbSale
 insert into tbSale(idClient, idSaler, totalSales)
 values
 	(1, 1, 1250.00),
 	(2, 2, 2000.00)
-
-update tbSaler
-set nameSaler = 'Jo„o Santana'
-where idSaler = 1
-
-update tbSaler
-set nameSaler = 'Raquel Torres'
-where idSaler = 2
 
 select * from tbSaleItens
 insert into tbSaleitens(idSale, idProduct, quantityitens, subTotalItens)
