@@ -33,6 +33,9 @@ delete from tbFabricator
 where idFabricator = 1
 
 select * from tbProduct
-update tbProduct
-set idFabricator = 2
-where idFabricator = 1
+delete from tbSaleItens
+where idProduct = 1
+
+select * from tbProduct
+delete from tbProduct
+where idProduct = 1
