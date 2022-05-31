@@ -11,11 +11,11 @@ values
 select * from tbProduct 
 insert into tbProduct(idEmployer, idFabricator, nameProduct, priceProduct, entryDateProduct)
 values 
-	(1, 1, 'Scikit-learn', 00.00, 2002-12-12),
-	(1, 1, 'Pandas', 00.00, 2002-12-12),
-	(1, 1, 'Seaborn', 00.00, 2002-12-12),
+	(1, 2, 'Scikit-learn', 00.00, 2002-12-12),
+	(1, 2, 'Pandas', 00.00, 2002-12-12),
+	(1, 2, 'Seaborn', 00.00, 2002-12-12),
 	(2, 2, 'TensorFlow', 00.00, 2002-12-12),
-	(2, 2, 'MatplotLib', 00.00, 2002-12-12),
+	(2, 3, 'MatplotLib', 00.00, 2002-12-12),
 	(2, 2, 'Numpy', 00.00, 2002-12-12),
 	(2, 3, 'Keras', 00.00, 2002-12-12),
 	(2, 3, 'Plotly', 00.00, 2002-12-12),
@@ -49,7 +49,7 @@ values
 select * from tbSaleItens
 insert into tbSaleitens(idSale, idProduct, quantityitens, subTotalItens)
 values
-	(1, 1, 1, 0),
-	(1, 4, 1, 0),
-	(2, 7, 1, 0),
-	(2, 9, 1, 0)
+	(2, 5, 1, 15),
+	(1, 6, 1, 20),
+	(2, 7, 1, 40),
+	(2, 9, 1, 5)
