@@ -1,5 +1,6 @@
 CREATE DATABASE bdEscolaIdiomas;
 
+
 CREATE TABLE tbAluno (
 	idAluno INT PRIMARY KEY IDENTITY(1, 1),
 	nomeAluno VARCHAR(60) NOT NULL,
@@ -37,3 +38,4 @@ ALTER COLUMN cargaHorarioCurso INT;
 
 ALTER TABLE tbTurma
 ALTER COLUMN horarioTurma SMALLDATETIME
+
