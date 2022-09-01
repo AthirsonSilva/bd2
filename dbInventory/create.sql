@@ -23,13 +23,13 @@ codFabricante INT PRIMARY KEY IDENTITY(1,1)
 CREATE TABLE tbVenda(
 codVenda INT PRIMARY KEY IDENTITY(1,1)
 , dataVenda SMALLDATETIME NOT NULL
-, valorTotalVenda MONEY NOT NULL
+, valorTotalVenda SMALLMONEY NOT NULL
 , codCliente INT FOREIGN KEY REFERENCES tbCliente(codCliente)
 );
 CREATE TABLE tbProduto(
 codProduto INT PRIMARY KEY IDENTITY(1,1)
 , descricaoProduto VARCHAR(200) NOT NULL
-, valorProduto MONEY NOT NULL
+, valorProduto SMALLMONEY NOT NULL
 , quantidadeProduto SMALLINT NOT NULL
 , codFabricante INT FOREIGN KEY REFERENCES tbFabricante(codFabricante)
 , codFornecedor INT FOREIGN KEY REFERENCES tbFornecedor(codFornecedor)
@@ -39,5 +39,5 @@ codzItensVenda INT PRIMARY KEY IDENTITY(1,1)
 , codVenda INT FOREIGN KEY REFERENCES tbVenda(codVenda)
 , codProduto INT FOREIGN KEY REFERENCES tbProduto(codProduto)
 , quantidadeItensVenda SMALLINT NOT NULL
-, subTotalItensVenda MONEY NOT NULL
+, subTotalItensVenda SMALLMONEY NOT NULL
 );

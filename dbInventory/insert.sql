@@ -1,6 +1,6 @@
 --inserindo dados e exibindo tabelas
 
-use bdEstoque
+USE bdEstoque
 
 INSERT INTO tbCliente (nomeCliente, cpfCliente, emailCliente, sexoCliente, dataNascimentoCliente)
 VALUES
