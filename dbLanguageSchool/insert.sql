@@ -1,4 +1,4 @@
-USE bdEscolaIdiomas;
+USE dbLanguageSchool;
 
 SELECT * FROM tbAluno;
 
@@ -16,8 +16,8 @@ SELECT * FROM tbCurso;
 
 INSERT INTO tbCurso(nomeCurso, cargaHorarioCurso, valorCurso)
 VALUES
-	('Inglês', 2000, 356.00),
-	('Alemão', 3000, 478.00),
+	('Inglï¿½s', 2000, 356.00),
+	('Alemï¿½o', 3000, 478.00),
 	('Espanhol', 4000, 500.00)
 
 SELECT * FROM tbTurma;

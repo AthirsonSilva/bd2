@@ -1,4 +1,6 @@
-CREATE DATABASE bdEscolaIdiomas;
+CREATE DATABASE dbLanguageSchool;
+
+USE dbLanguageSchool;
 
 
 CREATE TABLE tbAluno (
