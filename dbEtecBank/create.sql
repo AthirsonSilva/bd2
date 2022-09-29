@@ -1,4 +1,3 @@
-CREATE DATABASE bdBancoEtec
 
 
 
@@ -41,3 +40,10 @@ CREATE TABLE tbContaCorrente
     , idCorrentista INT FOREIGN KEY REFERENCES tbCorrentista(idCorrentista)
 
 )
+
+
+ALTER TABLE tbContaCorrente
+	ADD senhaAlfanumericaCC INT NOT NULL
+
+ALTER TABLE tbContaCorrente
+	ADD numeroCC DECIMAL(3, 3) NOT NULL
