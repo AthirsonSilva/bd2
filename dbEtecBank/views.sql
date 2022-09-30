@@ -38,5 +38,12 @@ create view vwCorrentePoupança as
 
 select * from vwCorrentePoupança
 
+create view vwClienteProdutos as
+	select dbo.accountHolder.name holder, COUNT(dbo.checkingAccount.id) accounts
+	from dbo.accountHolder
+		inner join dbo.checkingAccount on dbo.checkingAccount.accountHolderID = dbo.accountHolder.id
+		group by dbo.accountHolder.name
+
+select * from vwClienteProdutos
 
 		                     
