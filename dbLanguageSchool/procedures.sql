@@ -155,7 +155,7 @@ create procedure spInsereMatricula
 
 exec spInsereMatricula '2015-10-03', 3, 3
 
-alter procedure spInsereCursoPretendido
+create procedure spInsereCursoPretendido
 	@nomeCurso varchar(60),
 	@nomeAluno varchar(60),
 	@horarioPreferido smalldatetime,
