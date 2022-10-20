@@ -1,4 +1,4 @@
--- CREATE DATABASE dbLivrariaBrasileira
+CREATE DATABASE dbBrazilinLibrary
 
 USE dbBrazilianLibrary
 
