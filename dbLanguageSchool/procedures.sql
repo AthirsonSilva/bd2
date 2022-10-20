@@ -86,9 +86,39 @@ create procedure spExibeTurma
 
 	as 
 		begin
-			print('Informações da turma: ' + @nomeTurma)
+			if not exists (select * from tbTurma where nomeTurma like @nomeTurma)
+				begin
+					print('Turma informada não existe')
+				end
 
-			select * from tbTurma where nomeTurma like @nomeTurma
+			else
+				begin
+					print('Informações da turma: ' + @nomeTurma)
+					select * from tbTurma where nomeTurma like @nomeTurma
+				end
 		end
 
 exec spExibeTurma '1|A'
+
+-- 5.
+create procedure spAlunosDaTurma
+	@nomeTurma varchar(60)
+
+	as
+		begin
+			if not exists (select * from tbTurma where nomeTurma like @nomeTurma)
+				begin
+					print('Turma informada não existe.')
+				end
+
+			else 
+				begin
+					select nomeAluno, nomeTurma from tbAluno
+						inner join tbMatricula
+							on tbMatricula.idAluno = tbAluno.idAluno
+							inner join tbTurma
+								on tbTurma.idTurma = tbMatricula.idTurma
+				end
+		end
+
+exec spAlunosDaTurma '1|A'
