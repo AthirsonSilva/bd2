@@ -122,3 +122,97 @@ create procedure spAlunosDaTurma
 		end
 
 exec spAlunosDaTurma '1|A'
+
+-- 6.: O aluno num tem cpf não boy
+-- 7.
+create procedure spInsereMatricula
+	@dataMatricula smalldatetime,
+	@idAluno int,
+	@idTurma int
+
+	as
+	begin
+		declare @idMatricula int
+	end
+
+alter procedure spInsereCursoPretendido
+	@nomeCurso varchar(60),
+	@nomeAluno varchar(60),
+	@horarioPreferido smalldatetime,
+	@dataNascAluno smalldatetime,
+	@rgAluno char(13),
+	@naturalidadeAluno varchar(60)
+
+	as
+		begin
+			declare @idAluno int
+			declare @idCurso int
+
+			if not exists (select * from tbCurso where nomeCurso like @nomeCurso)
+			begin
+				print('Curso informada não existe')
+			end
+			
+			else
+			begin
+				exec spInsereAluno @nomeAluno, @dataNascAluno, @rgAluno, @naturalidadeAluno
+
+				set @idAluno = (select max(idAluno) from tbAluno)
+
+				if not exists (select * from tbCurso where nomeCurso like @nomeCurso)
+				begin
+					print('Curso informado não existe')
+				end
+
+				else
+				begin
+					set @idCurso = (select idCurso from tbCurso where nomeCurso like @nomeCurso)
+				end
+
+					if @idCurso = 1
+					begin
+						if not exists (select * from tbTurma where horarioTurma like @horarioPreferido)
+						begin
+							print('Horário inválido')
+						end
+
+						else
+						begin
+							if @horarioPreferido like '12:00:00'
+							begin	
+								insert into tbTurma (nomeTurma, horarioTurma, idCurso)
+								values
+									('1|A', '12:00:00', 1)
+							end
+
+							else
+							begin
+								insert into tbTurma (nomeTurma, horarioTurma, idCurso)
+								values
+									('1|B', '18:00:00', 1)
+							end
+						end
+					end
+
+					else if @idCurso = 2
+					begin
+						insert into tbTurma (nomeTurma, horarioTurma, idCurso)
+							values
+								('1AA', '19:00:00', 2)
+					end
+
+					else if @idCurso = 3
+					begin
+						insert into tbTurma (nomeTurma, horarioTurma, idCurso)
+							values
+								('1|C', '18:00:00', 3)
+					end
+
+					else
+					begin
+						print('Curso informado não existe')
+					end
+			end
+		end	
+
+exec spInsereCursoPretendido 'Espanhol', 'Ciclano', '12:00:00', '12/11/2002', '111.111.111-A', 'Jamal'
