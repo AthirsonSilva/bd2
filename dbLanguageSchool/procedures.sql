@@ -133,19 +133,41 @@ create procedure spInsereMatricula
 	as
 	begin
 		declare @idMatricula int
+
+		if exists (select * from tbMatricula where idAluno = @idAluno 
+		and idTurma = @idTurma 
+		and dataMatricula like @dataMatricula)
+		begin
+			print('Matricula já existe')
+		end
+
+		else 
+		begin
+			insert into tbMatricula (dataMatricula, idAluno, idTurma)
+			values
+				(@dataMatricula, @idAluno, @idTurma)
+
+			set @idMatricula = (select max(idMatricula) from tbMatricula)
+
+			print('Matricula de ID: ' + convert(varchar(5), @idMatricula) + ' cadastrada com sucesso.')
+		end
 	end
+
+exec spInsereMatricula '2015-10-03', 3, 3
 
 alter procedure spInsereCursoPretendido
 	@nomeCurso varchar(60),
 	@nomeAluno varchar(60),
 	@horarioPreferido smalldatetime,
 	@dataNascAluno smalldatetime,
+	@dataMatricula smalldatetime,
 	@rgAluno char(13),
 	@naturalidadeAluno varchar(60)
 
 	as
 		begin
 			declare @idAluno int
+			declare @idTurma int
 			declare @idCurso int
 
 			if not exists (select * from tbCurso where nomeCurso like @nomeCurso)
@@ -183,6 +205,10 @@ alter procedure spInsereCursoPretendido
 								insert into tbTurma (nomeTurma, horarioTurma, idCurso)
 								values
 									('1|A', '12:00:00', 1)
+
+								set @idTurma = (select max(idTurma) from tbTurma)
+
+								exec spInsereMatricula @dataMatricula, @idAluno, @idTurma
 							end
 
 							else
@@ -190,6 +216,10 @@ alter procedure spInsereCursoPretendido
 								insert into tbTurma (nomeTurma, horarioTurma, idCurso)
 								values
 									('1|B', '18:00:00', 1)
+
+								set @idTurma = (select max(idTurma) from tbTurma)
+
+								exec spInsereMatricula @dataMatricula, @idAluno, @idTurma
 							end
 						end
 					end
@@ -199,6 +229,10 @@ alter procedure spInsereCursoPretendido
 						insert into tbTurma (nomeTurma, horarioTurma, idCurso)
 							values
 								('1AA', '19:00:00', 2)
+
+								set @idTurma = (select max(idTurma) from tbTurma)
+
+								exec spInsereMatricula @dataMatricula, @idAluno, @idTurma
 					end
 
 					else if @idCurso = 3
@@ -206,6 +240,10 @@ alter procedure spInsereCursoPretendido
 						insert into tbTurma (nomeTurma, horarioTurma, idCurso)
 							values
 								('1|C', '18:00:00', 3)
+
+								set @idTurma = (select max(idTurma) from tbTurma)
+
+								exec spInsereMatricula @dataMatricula, @idAluno, @idTurma
 					end
 
 					else
@@ -215,4 +253,4 @@ alter procedure spInsereCursoPretendido
 			end
 		end	
 
-exec spInsereCursoPretendido 'Espanhol', 'Ciclano', '12:00:00', '12/11/2002', '111.111.111-A', 'Jamal'
+exec spInsereCursoPretendido 'Espanhol', 'Ciclano', '12:00:00', '12/11/2002', '12/11/2002', '111.111.111-A', 'Jamal'
