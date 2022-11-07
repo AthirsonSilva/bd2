@@ -34,7 +34,7 @@ codProduto INT PRIMARY KEY IDENTITY(1,1)
 , codFabricante INT FOREIGN KEY REFERENCES tbFabricante(codFabricante)
 , codFornecedor INT FOREIGN KEY REFERENCES tbFornecedor(codFornecedor)
 );
-CREATE TABLE tbzItensVenda(
+CREATE TABLE tbItensVenda(
 codzItensVenda INT PRIMARY KEY IDENTITY(1,1)
 , codVenda INT FOREIGN KEY REFERENCES tbVenda(codVenda)
 , codProduto INT FOREIGN KEY REFERENCES tbProduto(codProduto)
