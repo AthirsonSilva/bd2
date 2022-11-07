@@ -4,7 +4,7 @@ USE bdEstoque
 
 INSERT INTO tbCliente (nomeCliente, cpfCliente, emailCliente, sexoCliente, dataNascimentoCliente)
 VALUES
-('Armando JosÈ Santana', 12345678900, 'armandojsantana@outlook.com','m', '21-02-1961' ),
+('Armando Jos√© Santana', 12345678900, 'armandojsantana@outlook.com','m', '21-02-1961' ),
 ('Sheila Carvalho Leal', 45678909823, 'scarvalho@ig.com.br', 'f', '13-09-1978'),
 ('Carlos Henrique Souza', 76598278299, 'chenrique@ig.com.br', 'm', '08-09-1981'),
 ('Maria Aparecida Souza', 81365309899, 'mapdasouza@outlook', 'f', '07-07-1962'),
@@ -15,7 +15,7 @@ INSERT INTO tbFornecedor (nomeFornecedor,contatoFonecedor)
 VALUES
 ('Kabum', 'Leandro Ramos'),
 ('DELL', 'Michael Dell'),
-('RedDragon', 'N„o sei')
+('RedDragon', 'N√£o sei')
 SELECT * FROM tbFornecedor
 INSERT INTO tbFabricante (nomeFabricante)
 VALUES
@@ -39,16 +39,16 @@ INSERT INTO tbProduto (descricaoProduto, valorProduto, quantidadeProduto, codFab
 VALUES
 ('Amaciante Downy', 5.76, 1500, 2, 1),
 ('Amaciante Comfort', 5.45, 2300, 1, 1),
-('Sab„o em pÛ OMO', 5.99, 1280, 1, 2),
+('Sab√£o em p√≥ OMO', 5.99, 1280, 1, 2),
 ('Margarina Qually', 4.76, 2500, 3, 1),
 ('Salsicha Hot Dog Sadia', 6.78, 2900, 3, 2),
-('Mortandela Perdig„o', 2.50, 1200, 3, 3),
+('Mortandela Perdig√£o', 2.50, 1200, 3, 3),
 ('Hamburger Sadia', 9.89, 1600, 3, 1),
 ('Fralda Pampers', 36.00, 340, 2, 3),
 ('Xampu Seda', 2.89, 800, 1, 2),
 ('Condicionador Seda', 6.50, 700, 1 ,3);
 SELECT * FROM tbProduto
-INSERT INTO tbzItensVenda(codVenda, codProduto, quantidadeItensVenda, subTotalItensVenda)
+INSERT INTO tbItensVenda(codVenda, codProduto, quantidadeItensVenda, subTotalItensVenda)
 VALUES
 (1,1,200,1500.00),
 (1,2,300,3000.00),
@@ -72,4 +72,4 @@ INSERT INTO tbProduto (descricaoProduto, valorProduto, quantidadeProduto, codFab
 VALUES
 ('Amaciante Downy', 5.76, 1500, 2),
 ('Amaciante Comfort', 5.45, 2300, 1),
-('Sab„o em pÛ OMO', 5.99, 1280, 1)
+('Sab√£o em p√≥ OMO', 5.99, 1280, 1)
