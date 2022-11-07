@@ -65,7 +65,7 @@ VALUES
 (8,2,200,1000.00),
 (9,6,250,1700.00),
 (9,5,200,1700.00)
-SELECT * FROM tbzItensVenda
+SELECT * FROM tbItensVenda
 
 SELECT * FROM tbProduto
 INSERT INTO tbProduto (descricaoProduto, valorProduto, quantidadeProduto, codFabricante)
