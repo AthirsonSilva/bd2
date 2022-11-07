@@ -35,7 +35,7 @@ codProduto INT PRIMARY KEY IDENTITY(1,1)
 , codFornecedor INT FOREIGN KEY REFERENCES tbFornecedor(codFornecedor)
 );
 CREATE TABLE tbItensVenda(
-codzItensVenda INT PRIMARY KEY IDENTITY(1,1)
+codItensVenda INT PRIMARY KEY IDENTITY(1,1)
 , codVenda INT FOREIGN KEY REFERENCES tbVenda(codVenda)
 , codProduto INT FOREIGN KEY REFERENCES tbProduto(codProduto)
 , quantidadeItensVenda SMALLINT NOT NULL
