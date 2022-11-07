@@ -41,3 +41,15 @@ codItensVenda INT PRIMARY KEY IDENTITY(1,1)
 , quantidadeItensVenda SMALLINT NOT NULL
 , subTotalItensVenda SMALLMONEY NOT NULL
 );
+CREATE TABLE tbSaidaProduto (
+	codSaidaProduto INT PRIMARY KEY IDENTITY(1,1),
+	dataSaidaProduto SMALLDATETIME NOT NULL,
+	codProduto INT FOREIGN KEY REFERENCES tbProduto (codProduto),
+	quantidadeSaidaProduto INT NOT NULL
+);
+CREATE TABLE tbEntradaProduto (
+	codEntradaProduto INT PRIMARY KEY IDENTITY(1,1),
+	dataEntradaProduto SMALLDATETIME NOT NULL,
+	codProduto INT FOREIGN KEY REFERENCES tbProduto (codProduto),
+	quantidadeEntradaProduto INT NOT NULL
+);
