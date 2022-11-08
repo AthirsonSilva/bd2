@@ -17,7 +17,7 @@ values ('Zezin do Jamal', 'jamalzezin@gmail.net')
 alter trigger tgAtualizaVenda on tbItensVenda after insert
 as
 	declare @qtdProdutos int, @codVenda int, @codProduto int
-	set @codVenda = (select codVenda from INSERTED)
+	set @codVenda = (select codVenda from inserted)
 	select @qtdProdutos = quantidadeItensVenda from inserted
 	set @codProduto = (select codProduto from tbItensVenda where codVenda = @codVenda)
 	update tbProduto
@@ -33,7 +33,8 @@ values
 	(1, 2, 4, 125.00)
 
 -- 2
-alter trigger tgAtualizaEntrada on tbEntradaProduto after insert
+alter trigger tgAtualizaEntrada on tbEntradaProduto 
+after insert
 as
 	declare @qtdProdutos int, @codProduto int, @codEntradaProduto int
 
@@ -46,13 +47,15 @@ as
 		where codProduto = @codProduto
 
 -- 3
-alter trigger tgAtualizaEntrada on tbItensVenda after insert
+alter trigger tgAtualizaSaida on tbItensVenda 
+after insert
 as
-	declare @qtdProdutos int, @codProduto int, @dataSaidaProduto int
+	declare @qtdProdutos int, @codProduto int, @dataSaidaProduto smalldatetime, @codVenda int
 
+	set @codVenda = (select codVenda from inserted)
 	set @qtdProdutos = (select quantidadeItensVenda from inserted)
 	set @dataSaidaProduto = getdate()
-	set @codProduto = (select codProduto from tbEntradaProduto where codEntradaProduto = @codEntradaProduto)
+	set @codProduto = (select codProduto from tbItensVenda where codVenda = @codVenda)
 
-	insert into tbSaidaProduto (dataSaidaProduto, codProduto, quantitadadeSaidaProduto)
+	insert into tbSaidaProduto (dataSaidaProduto, codProduto, quantidadeSaidaProduto)
 	values (@dataSaidaProduto, @codProduto, @qtdProdutos)
