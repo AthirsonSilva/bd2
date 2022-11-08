@@ -24,16 +24,16 @@ as
 		set quantidadeProduto = quantidadeProduto + @qtdProdutos
 		where codProduto = @codProduto
 
-select * from tbItensVenda
-select * from tbProduto
-select * from tbVenda
-
 insert into tbItensVenda (codProduto,codVenda, quantidadeItensVenda, subTotalItensVenda)
 values
 	(1, 2, 4, 125.00)
 
+select * from tbItensVenda
+select * from tbProduto
+select * from tbVenda
+
 -- 2
-alter trigger tgAtualizaEntrada on tbEntradaProduto 
+create trigger tgAtualizaEntrada on tbEntradaProduto 
 after insert
 as
 	declare @qtdProdutos int, @codProduto int, @codEntradaProduto int
@@ -46,8 +46,12 @@ as
 		set quantidadeProduto = quantidadeProduto + @qtdProdutos
 		where codProduto = @codProduto
 
+insert into tbEntradaProduto (codProduto, dataEntradaProduto, quantidadeEntradaProduto)
+values (1, getdate(), 5)
+select * from tbEntradaProduto
+
 -- 3
-alter trigger tgAtualizaSaida on tbItensVenda 
+create trigger tgAtualizaSaida on tbItensVenda 
 after insert
 as
 	declare @qtdProdutos int, @codProduto int, @dataSaidaProduto smalldatetime, @codVenda int
@@ -59,3 +63,8 @@ as
 
 	insert into tbSaidaProduto (dataSaidaProduto, codProduto, quantidadeSaidaProduto)
 	values (@dataSaidaProduto, @codProduto, @qtdProdutos)
+
+insert into tbItensVenda (codProduto,codVenda, quantidadeItensVenda, subTotalItensVenda)
+values (1, 1, 4, 25.00)
+
+select * from tbSaidaProduto
