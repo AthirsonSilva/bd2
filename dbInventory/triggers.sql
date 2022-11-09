@@ -46,6 +46,8 @@ as
 		set quantidadeProduto = quantidadeProduto + @qtdProdutos
 		where codProduto = @codProduto
 
+	print('Produto de ID ' + convert(varchar(60), @codProduto) + ' foi atualizado com sucesso!')
+
 insert into tbEntradaProduto (codProduto, dataEntradaProduto, quantidadeEntradaProduto)
 values (1, getdate(), 5)
 select * from tbEntradaProduto
